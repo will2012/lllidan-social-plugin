@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    id="cordova-plugin-social"
+    version="1.1.0">
+    <name>Social</name>
+    <description>Cordova Social Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,Social</keywords>
+
+
+    <js-module src="www/Social.js" name="social">
+        <clobbers target="navigator.social" />
+    </js-module>
+
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Social">
+                <param name="android-package" value="com.wangdahoo.social.SocialPlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Social">
+                <param name="android-package" value="com.wangdahoo.social.SocialPlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mob.tools.MobUIShell" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+                <meta-data android:name="AuthorizeAdapter" android:value="cn.sharesdk.demo.MyAdapter" />
+                <intent-filter>
+                    <data android:scheme="db-7janx53ilz11gbs" />
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+                <intent-filter>
+                    <data android:scheme="tencent100371282" />
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                </intent-filter>
+            </activity>
+            <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name=".wxapi.WXEntryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser" android:windowSoftInputMode="adjustResize">
+            </activity>
+            <activity android:name="cn.sharesdk.sina.weibo.SinaActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+                <intent-filter>
+                    <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </activity>
+            <activity android:configChanges="keyboardHidden|orientation" android:name="cn.sharesdk.framework.ShareSDKUIShell" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+            </activity>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.FLASHLIGHT" />
+            <!-- Not required to allow users to work around this -->
+            <uses-feature android:name="android.hardware.camera" android:required="false" />
+        </config-file>
+        <source-file src="src/android/SocialPlugin.java" target-dir="src/com/wangdahoo/social" />
+        <source-file src="src/android/SocialPlugin.java" target-dir="src/com/wangdahoo/social" />
+        <source-file src="src/android/ShareSDK.xml" target-dir="assets" />
+        <source-file src="src/android/libs/gson-2.2.4.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-Core-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-QQ-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-SinaWeibo-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-Wechat-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-Wechat-Core-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-Wechat-Favorite-2.5.9.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/ShareSDK-Wechat-Moments-2.5.9.jar" target-dir="libs"/>
+     </platform>
+</plugin>
