@@ -63,6 +63,7 @@
         <source-file src="src/android/SocialPlugin.java" target-dir="src/com/wangdahoo/social" />
         <source-file src="src/android/WXEntryActivity.java" target-dir="src/com/wangdahoo/lllidan/wxapi" />
         <source-file src="src/android/ShareSDK.xml" target-dir="assets" />
+         <source-file src="src/android/ssdk_strings.xml" target-dir="res/values" />
         <source-file src="src/android/libs/gson-2.2.4.jar" target-dir="libs"/>
         <source-file src="src/android/libs/ShareSDK-Core-2.5.9.jar" target-dir="libs"/>
         <source-file src="src/android/libs/ShareSDK-QQ-2.5.9.jar" target-dir="libs"/>
