@@ -21,7 +21,7 @@ import cn.sharesdk.wechat.friends.Wechat;
 import com.google.gson.JsonObject;
 
 public class SocialPlugin extends CordovaPlugin{
-	private static final String LOGIN = "login";
+	private static final String AUTHORIZE = "authorize";
 	private static final int LOGIN_TYPE_QQ = 0;
 	private static final int LOGIN_TYPE_SINA = 1;
 	private static final int LOGIN_TYPE_WECHAT = 2;
@@ -66,7 +66,7 @@ public class SocialPlugin extends CordovaPlugin{
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext)  throws JSONException{
         this.callbackContext = callbackContext;
 		boolean result = false;
-        if (LOGIN.equals(action)){
+        if (AUTHORIZE.equals(action)){
 		   int loginType = args.getInt(0);
 		   authorize(loginType);
 		   result = true;
@@ -98,7 +98,7 @@ public class SocialPlugin extends CordovaPlugin{
 			platform.SSOSetting(true);
 			platform.showUser(null);
 		} catch(Exception e){
-//			com.wangdahoo.util.T.showShort(cordova.getActivity(), Log.getStackTraceString(e));
+			callbackContext.error( Log.getStackTraceString(e));
 		}
 	}
 
